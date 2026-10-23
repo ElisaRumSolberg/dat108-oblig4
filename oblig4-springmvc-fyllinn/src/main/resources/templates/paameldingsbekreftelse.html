@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<link rel="stylesheet" href="css/simple.css">
-<title>Påmeldingsbekreftelse</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/simple.css">
+    <title>Påmeldingsbekreftelse</title>
 </head>
 <body>
-	<h2>Påmeldingsbekreftelse</h2>
-	<p>Påmeldingen er mottatt for</p>
 
-    <!-- TODO - Kvitteringen for påmeldt -->
+<h2>Påmeldingsbekreftelse</h2>
+<p>Påmeldingen er mottatt for</p>
 
-    <!-- TODO - Lenke til deltagerlisten -->
+<p>
+    <th:block th:text="${session.user.fornavn}"></th:block><br />
+    <th:block th:text="${session.user.etternavn}"></th:block><br />
+    <th:block th:text="${session.user.mobil}"></th:block><br />
+    <th:block th:text="${session.user.kjonn}"></th:block>
+</p>
+
+<a href="deltagerliste">Gå til deltagerlisten</a>
 
 </body>
 </html>

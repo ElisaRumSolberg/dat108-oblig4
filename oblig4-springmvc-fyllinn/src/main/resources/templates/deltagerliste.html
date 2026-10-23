@@ -1,27 +1,38 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<meta charset="UTF-8">
-	<link rel="stylesheet" href="css/simple.css">
-	<title>Deltagerliste</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/simple.css">
+    <title>Deltagerliste</title>
 </head>
 <body>
-    <!-- TODO - Informasjon om hvem du er innlogget som -->
 
-	<h2>Deltagerliste</h2>
-	<table>
-		<tr>
-			<th>Kjønn</th>
-			<th align="left">Navn</th>
-			<th align="left">Mobil</th>
-		</tr>
+<p th:text="|Innlogget som: ${session.user.mobil} / ${session.user.fornavn} ${session.user.etternavn}|"></p>
 
-        <!-- TODO - Tabellradene med påmeldte deltagere -->
+<h2>Deltagerliste</h2>
 
-	</table>
-	<br>
+<table>
+    <tr>
+        <th>Kjønn</th>
+        <th align="left">Navn</th>
+        <th align="left">Mobil</th>
+    </tr>
 
-    <!-- TODO - Skjema med knapp for utlogging -->
+    <tr th:each="d : ${deltagere}"
+        th:style="${session.user eq d} ? 'background-color:#aaffaa;' : ''">
+
+        <td align="center" th:utext="${d.kjonnsymbol}"></td>
+        <td th:text="${d.fulltNavn}"></td>
+        <td th:text="${d.mobilFormatert}"></td>
+    </tr>
+
+</table>
+
+<br>
+
+<form action="utlogging" method="post">
+    <button type="submit">Logg ut</button>
+</form>
 
 </body>
 </html>
