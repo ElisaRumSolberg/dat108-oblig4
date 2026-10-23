@@ -33,7 +33,7 @@ public class DeltagerDbService {
     public static List<Deltager> finnAlleSortertPaaFulltNavn() {
 
         return deltagerliste.stream()
-                .sorted(Deltager.paafulltNavn)
+                .sorted(Deltager.paaFulltNavn)
                 .toList();
     }
 
